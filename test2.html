@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="gsStyle1.css">
+
+    <script type="text/javascript" src="./test2.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+
+</head>
+
+
+<body>
+
+<h1>My 2nd JavaScript</h1>
+
+<input type="button" value="alert" onclick="gsAlert()">
+<tr></tr>
+<p id="pTable1">Table1 test</p>
+<button type="button"
+onclick="gspTable1()">
+Click me to display Date and Time.</button>
+<p id="demo"></p>
+
+<input type="button" value="Table1" onclick="gsTable1()">
+
+<tr></tr>
+
+<div>
+    <table>
+        <tbody id="tbody"></tbody>
+    </table>    
+</div>
+
+<form method="post" id="signup">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit" onclick="gsFormAction()">
+  </form>   
+
+  <form method="post" id="signup2">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname2" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname2" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Subscribe" >
+  </form>  
+
+  <form onsubmit="gsFormAction3()" id="signup3">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit" >
+  </form> 
+  <br>
+
+  <input type="button" value="plot1" onclick="gsPlot1()">
+  <div id="myPlot" style="width:100%;max-width:700px"></div>
+
+
+  <br>
+  <input type="button" value="myChart2" onclick="gsPlot2()">
+  <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+
+ 
+  <br>
+  <input type="button" value="myChart3" onclick="gsPlot3()">
+  <div id="myChart3" style="width:100%; max-width:600px; height:500px;"></div>
+
+
+  <br>
+  <input type="button" value="myChart_superCool" onclick="gsPlot4()">
+  <svg id="myChart4" style="width:500px;height:500px"></svg>
+
+
+</body>
+</html> 

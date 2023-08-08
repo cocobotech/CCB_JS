@@ -1,0 +1,23 @@
+body {
+    color: blue;
+  }
+  
+  h1 {
+    color: green;
+  }
+
+  table {
+
+    border: 1px solid;
+    
+    padding: 3px;
+    
+    }
+     /* 
+    div {
+        height: 200px;
+        width: 50%;
+        background-color: powderblue;
+        
+      }
+      */
