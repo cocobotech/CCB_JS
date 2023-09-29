@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PROJ01_Canvas</title>
+
+</head>
+<body>
+
+
+
+<canvas id="ccb_01" width="300" height="200"></canvas>
+<canvas id="ccb_02" width="300" height="200"></canvas>
+<canvas id="ccb_03" width="300" height="200"></canvas>
+<canvas id="ccb_04" width="300" height="200"></canvas>
+<canvas id="ccb_05" width="300" height="200"></canvas>
+<canvas id="ccb_06" width="300" height="200"></canvas>
+
+<canvas id="ccb_07" width="300" height="200"></canvas>
+<canvas id="ccb_08" width="300" height="200"></canvas>
+
+<canvas id="ccb_09" width="300" height="200"></canvas>
+
+<canvas id="ccb_10" width="300" height="200"></canvas>
+<canvas id="ccb_11" width="300" height="300"></canvas>
+<canvas id="ccb_12" width="300" height="300"></canvas>
+
+<script type="text/javascript">
+////https://www.runoob.com/w3cnote/html5-canvas-intro.html
+function ccb_01(){
+    var canvas = document.getElementById('ccb_01');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "rgb(200,0,0)";
+    
+    ctx.fillRect (10, 10, 55, 50);
+ 
+    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+    ctx.fillRect (30, 30, 55, 50);
+}
+
+function ccb_02(){
+    var canvas = document.getElementById('ccb_02');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    //ctx.fillStyle = "rgb(200,0,0)";
+    ctx.strokeRect(30, 30, 100, 50); 
+    ctx.font = "10px sans-serif"
+    ctx.fillText("strokeRect", 30, 30);
+    ctx.font = "30px sans-serif"
+    ctx.strokeText("strokeText", 70, 80)
+
+}
+
+function ccb_03(){
+    var canvas = document.getElementById('ccb_03');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+    ctx.lineTo(200, 50);
+    ctx.lineTo(200, 200);
+      ctx.closePath(); 
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(90, 120);
+    ctx.lineTo(150, 70);
+    ctx.lineTo(180, 190);
+   
+    ctx.fill();
+
+}
+function ccb_04(){
+    var canvas = document.getElementById('ccb_04');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(50, 50, 40, 0, Math.PI / 2, false);
+    ctx.stroke();
+ 
+    ctx.beginPath();
+    ctx.arc(150, 50, 40, 0, -Math.PI / 2, true);
+    ctx.closePath();
+    ctx.stroke();
+ 
+    ctx.beginPath();
+    ctx.arc(50, 150, 40, -Math.PI / 2, Math.PI / 2, false);
+    ctx.fill();
+ 
+    ctx.beginPath();
+    ctx.arc(150, 150, 40, 0, Math.PI, false);
+    ctx.fill();
+
+}
+function ccb_05(){
+    var canvas = document.getElementById('ccb_05');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    for (var i = 0; i < 6; i++){
+        for (var j = 0; j < 6; j++){
+        ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' +
+            Math.floor(255 - 42.5 * j) + ',0)';
+        ctx.fillRect(j * 50, i * 50, 50, 50);
+        }
+    }
+
+}
+
+
+function ccb_06(){
+    var canvas = document.getElementById('ccb_06');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    
+    function randomInt(from, to){
+    return parseInt(Math.random() * (to - from + 1) + from);
+    }
+
+    for (var i = 0; i < 6; i++){
+        for (var j = 0; j < 6; j++){
+            ctx.strokeStyle = `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+            ctx.strokeRect(j * 50, i * 50, 40, 40);
+        }
+    }
+
+    ctx.font = "15px sans-serif"
+    ctx.fillText("ccb_06", 30, 30);
+
+}
+
+function ccb_07(){
+    var canvas = document.getElementById('ccb_07');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 20px sans-serif"
+    ctx.fillText("ccb_07 line style", 20, 20);
+
+    ctx.beginPath();
+    ctx.moveTo(30, 30);
+    ctx.lineTo(100, 30);
+    ctx.lineWidth = 10;
+    ctx.stroke();
+
+    var lineCaps = ["butt", "round", "square"];
+ 
+    for (var i = 0; i < 3; i++){
+        ctx.beginPath();
+        ctx.moveTo(20 + 50 * i, 50);
+        ctx.lineTo(20 + 50 * i, 130);
+        ctx.lineWidth = 20;
+        ctx.lineCap = lineCaps[i];
+        ctx.stroke();
+    }
+
+
+
+    ctx.beginPath();
+    ctx.moveTo(0, 30);
+    ctx.lineTo(300, 30);
+    
+    ctx.moveTo(0, 100);
+    ctx.lineTo(300, 100)
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+
+    var lineJoin = ['round', 'bevel', 'miter'];
+    ctx.lineWidth = 20;
+    ctx.strokeStyle = "rgba(200, 0, 0, 0.7)";
+    
+    for (var i = 0; i < lineJoin.length; i++){
+        ctx.lineJoin = lineJoin[i];
+        ctx.beginPath();
+        ctx.moveTo(50, 50 + i * 50);
+        ctx.lineTo(100, 100 + i * 50);
+        ctx.lineTo(150, 50 + i * 50);
+        ctx.lineTo(200, 100 + i * 50);
+        ctx.lineTo(250, 50 + i * 50);
+        ctx.stroke();
+    }
+
+    ctx.lineWidth = 2;
+    ctx.setLineDash([20, 5]);  // [实线长度, 间隙长度]
+    ctx.lineDashOffset = -0;
+    ctx.strokeRect(20, 20, 160, 160);
+
+}
+
+function ccb_08(){
+    var canvas = document.getElementById('ccb_08');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 20px sans-serif"
+    ctx.fillText("ccb_08 line style", 20, 20);
+
+    ctx.shadowBlur=20;
+    ctx.shadowColor="black";
+
+    ctx.fillStyle="rgba(200, 0, 0, 0.7)";
+    ctx.fillRect(20,20,100,80);
+    ctx.save(); //save the status before translate,
+    ctx.translate(50, 50);
+    ctx.rotate(Math.PI / 180 * 45);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0, 0, 60, 60);
+    ctx.restore();
+
+    ctx.fillRect(150,150,30,30);
+}
+
+function ccb_09(){
+    var canvas = document.getElementById('ccb_09');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    //transform(a, b, c, d, e, f)
+    /*
+    a (m11): Horizontal scaling.
+    b (m12): Horizontal skewing.
+    c (m21):​ Vertical skewing.
+    d (m22):​ Vertical scaling.
+    e (dx):​ Horizontal moving.
+    f (dy):​ Vertical moving.
+    */
+
+    ctx.transform(1, 1, 0, 1, 0, 0);
+    ctx.fillRect(0, 0, 100, 100);
+
+}
+
+
+
+function ccb_10(){
+    var canvas = document.getElementById('ccb_10');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 20px sans-serif"
+    
+    ctx.fillStyle="rgba(200, 0, 0, 0.7)";
+    ctx.fillText("ccb_10 line style", 20, 20);
+
+
+
+
+}
+/*
+一般用到下面三个方法：
+
+setInterval()
+setTimeout()
+requestAnimationFrame()
+*/
+
+function ccb_11(){
+    var canvas = document.getElementById('ccb_11');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    draw(ctx);
+
+
+
+function draw(ctx){
+    requestAnimationFrame(function step(){
+        drawDial(ctx); //绘制表盘
+        drawAllHands(ctx); //绘制时分秒针
+        requestAnimationFrame(step);
+    });
+}
+/*绘制时分秒针*/
+function drawAllHands(ctx){
+    let time = new Date();
+
+    let s = time.getSeconds();
+    let m = time.getMinutes();
+    let h = time.getHours();
+
+    let pi = Math.PI;
+    let secondAngle = pi / 180 * 6 * s;  //计算出来s针的弧度
+    let minuteAngle = pi / 180 * 6 * m + secondAngle / 60;  //计算出来分针的弧度
+    let hourAngle = pi / 180 * 30 * h + minuteAngle / 12;  //计算出来时针的弧度
+
+    drawHand(hourAngle, 60, 6, "red", ctx);  //绘制时针
+    drawHand(minuteAngle, 106, 4, "green", ctx);  //绘制分针
+    drawHand(secondAngle, 129, 2, "blue", ctx);  //绘制秒针
+}
+/*绘制时针、或分针、或秒针
+ * 参数1：要绘制的针的角度
+ * 参数2：要绘制的针的长度
+ * 参数3：要绘制的针的宽度
+ * 参数4：要绘制的针的颜色
+ * 参数4：ctx
+ * */
+function drawHand(angle, len, width, color, ctx){
+    ctx.save();
+    ctx.translate(150, 150); //把坐标轴的远点平移到原来的中心
+    ctx.rotate(-Math.PI / 2 + angle);  //旋转坐标轴。 x轴就是针的角度
+    ctx.beginPath();
+    ctx.moveTo(-4, 0);
+    ctx.lineTo(len, 0);  // 沿着x轴绘制针
+    ctx.lineWidth = width;
+    ctx.strokeStyle = color;
+    ctx.lineCap = "round";
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
+}
+
+/*绘制表盘*/
+function drawDial(ctx){
+    let pi = Math.PI;
+
+    ctx.clearRect(0, 0, 300, 300); //清除所有内容
+    ctx.save();
+
+    ctx.translate(150, 150); //一定坐标原点到原来的中心
+    ctx.beginPath();
+    ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周
+    ctx.stroke();
+    ctx.closePath();
+
+    for (let i = 0; i < 60; i++){//绘制刻度。
+        ctx.save();
+        ctx.rotate(-pi / 2 + i * pi / 30);  //旋转坐标轴。坐标轴x的正方形从 向上开始算起
+        ctx.beginPath();
+        ctx.moveTo(110, 0);
+        ctx.lineTo(140, 0);
+        ctx.lineWidth = i % 5 ? 2 : 4;
+        ctx.strokeStyle = i % 5 ? "blue" : "red";
+        ctx.stroke();
+        ctx.closePath();
+        ctx.restore();
+    }
+    ctx.restore();
+}
+
+}
+
+function ccb_12(){
+    var canvas = document.getElementById('ccb_12');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    function draw(){
+        ctx.save();
+        ctx.clearRect(0, 0, 300, 300); //清空所有的内容
+        /*绘制 太阳*/
+        
+        ctx.font = "bold 20px sans-serif"
+        
+        
+        ctx.strokeStyle="orange";
+        ctx.lineWidth = 3;
+        ctx.fillText("SUN", 150-20, 150+7);
+        ctx.arc(150, 150, 30, 0, 2 * Math.PI);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.translate(150, 150);
+    
+        //绘制earth轨道
+        
+        ctx.strokeStyle = "rgba(255,0,0,0.5)";
+        
+        ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+        ctx.stroke()
+    
+
+    
+        let time = new Date();
+        //绘制地球
+        ctx.beginPath();
+        ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+        ctx.translate(100, 0);
+        ctx.fillText("Earth", 0, 0);
+        ctx.fillStyle="rgba(0, 200, 0, 0.7)";
+        ctx.arc(0, 0, 20, 0, 2 * Math.PI);
+        ctx.stroke();
+    
+        //绘制月球轨道
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(255,255,255,.3)";
+        ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+    
+        //绘制月球
+        ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
+        ctx.translate(40, 0);
+        //ctx.drawImage(moon, -3.5, -3.5);
+        ctx.fillText("Moon", 0, 0);
+        ctx.arc(-3.5, -3.5, 9, 0, 2 * Math.PI);
+        ctx.restore();
+    
+        requestAnimationFrame(draw);
+    }
+	draw();
+
+}
+
+
+
+ccb_01();
+ccb_02();
+ccb_03();
+ccb_04();
+
+ccb_05();
+ccb_06();
+ccb_07();
+ccb_08();
+
+
+ccb_09();
+
+
+ccb_10();
+ccb_11();
+ccb_12();
+
+</script>
+</body>
+</html>
