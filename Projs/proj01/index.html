@@ -278,6 +278,25 @@ function ccb_07(){
     ctx.lineDashOffset = -0;
     ctx.strokeRect(5, 5, 280, 280);
 
+    function drawDashedLine(pattern) {
+	  ctx.beginPath();
+	  ctx.setLineDash(pattern);
+	  ctx.moveTo(200, y);
+	  ctx.lineTo(300, y);
+	  ctx.stroke();
+	  y += 20;
+	}
+
+	let y = 15;
+
+	drawDashedLine([]);
+	drawDashedLine([1, 1]);
+	drawDashedLine([10, 10]);
+	drawDashedLine([20, 5]);
+	drawDashedLine([15, 3, 3, 3]);
+	drawDashedLine([20, 3, 3, 3, 3, 3, 3, 3]);
+	drawDashedLine([12, 3, 3]); // Equals [12, 3, 3, 12, 3, 3]
+
 
 }
 
