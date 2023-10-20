@@ -8,6 +8,11 @@
 <canvas id="ccb_06" width="300" height="300"></canvas>
 
 <canvas id="ccb_07" width="300" height="300"></canvas>
+
+
+<canvas id="ccb_07a" width="400" height="400"></canvas>
+<canvas id="ccb_07b" width="400" height="400"></canvas>
+
 <canvas id="ccb_08" width="300" height="300"></canvas>
 
 <canvas id="ccb_09" width="300" height="300"></canvas>
@@ -300,6 +305,197 @@ function ccb_07(){
 
 }
 
+
+
+function ccb_07a(){
+    var canvas = document.getElementById('ccb_07a');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 15px sans-serif"
+    ctx.fillStyle="rgba(0, 0, 222, 0.6)";
+    ctx.fillText("ccb_07a", 20, 20);
+
+
+
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+
+    ctx.moveTo(30, 30);
+    ctx.lineTo(280, 30);
+    ctx.stroke();
+    
+
+    function drawDashedLine(pattern) {
+        ctx.beginPath();
+        ctx.setLineDash(pattern);
+        ctx.moveTo(30, y);
+        ctx.lineTo(350, y);
+        ctx.stroke();
+        y += 20;
+      }
+  
+      let y = 45;
+  
+      drawDashedLine([]);
+      drawDashedLine([1, 1]);
+      drawDashedLine([10, 10]);
+      drawDashedLine([20, 5]);
+      drawDashedLine([15, 3, 3, 3]);
+      drawDashedLine([20, 3, 3, 3, 3, 3, 3, 3]);
+      drawDashedLine([12, 3, 3]); // Equals [12, 3, 3, 12, 3, 3]
+
+      ctx.lineWidth=10
+      ctx.strokeStyle='darkblue'
+      drawDashedLine([20, 5]);
+      drawDashedLine([15, 3, 3, 3]);
+      drawDashedLine([20, 3, 3, 3, 3, 3, 3, 3]);
+      drawDashedLine([12, 3, 3]); // Equals [12, 3, 3, 12, 3, 3]
+
+}
+
+function ccb_07b(){
+    var canvas = document.getElementById('ccb_07b');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 15px sans-serif"
+    ctx.fillStyle="rgba(0, 0, 222, 0.6)";
+    ctx.fillText("ccb_07b", 20, 20);
+
+    const startPoint = { x: 30, y: 120 };
+    const endPoint = { x: 350, y: 120 };
+    const arrowSize = 10;
+    const linepattern=[15, 3, 3, 3];
+    draw_arrow_line(startPoint,endPoint,arrowSize, linepattern,"darkred")
+
+
+
+    const startPoints =[{ x: 30, y: 50 },{ x: 30, y: 60 }] ;
+    const endPoints = [{ x: 350, y: 50 },{ x: 350, y: 100 }];
+    const arrowSizes = [10,20];
+    const linepatterns=[[15, 3, 3, 3],[20, 3, 3, 3, 3, 3, 3, 3]];
+    
+    for(var i=0; i<startPoints.length;i++){
+
+        draw_arrow_line(startPoints[i],endPoints[i],arrowSizes[i], linepatterns[i])
+    }
+
+
+    function draw_arrow_line(startPoint,endPoint,arrowSize,linepattern, fillStyle="#000"){
+        // Draw the line
+        ctx.strokeStyle = 'rgba(250,0,0,0.99)'; // Line color
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+        ctx.setLineDash(linepattern);
+        ctx.moveTo(startPoint.x, startPoint.y);
+        ctx.lineTo(endPoint.x, endPoint.y);
+        ctx.stroke();
+
+        // Draw the arrowhead
+        const angle = Math.atan2(endPoint.y - startPoint.y, endPoint.x - startPoint.x);
+        ctx.beginPath();
+        ctx.moveTo(endPoint.x, endPoint.y);
+        ctx.lineTo(
+            endPoint.x - arrowSize * Math.cos(angle - Math.PI / 6),
+            endPoint.y - arrowSize * Math.sin(angle - Math.PI / 6)
+        );
+        ctx.lineTo(
+            endPoint.x - arrowSize * Math.cos(angle + Math.PI / 6),
+            endPoint.y - arrowSize * Math.sin(angle + Math.PI / 6)
+        );
+        ctx.closePath();
+        ctx.fillStyle = fillStyle    //'rgba(00,0,80,0.7)'; // Arrowhead color
+        ctx.fill();
+
+
+    }
+
+    points=[
+        { x: 30, y: 150 },
+        { x: 90, y: 150 },
+        { x: 90, y: 190 },
+        { x: 200, y: 190 }
+        ];
+    function link_line(dots,linecolor,linepattern){
+
+        for (let i = 0; i < dots.length; i++) {
+            ctx.beginPath();
+            ctx.arc(dots[i].x, dots[i].y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#000';
+            ctx.fill();
+        }
+
+        ctx.strokeStyle = linecolor; // Line color
+        ctx.setLineDash(linepattern); // Dotted line pattern
+        ctx.lineWidth = 2;
+
+        for (let i = 0; i < dots.length; i++) {
+            for (let j = i + 1; j < dots.length; j++) {
+                ctx.beginPath();
+                ctx.moveTo(dots[i].x, dots[i].y);
+                ctx.lineTo(dots[j].x, dots[j].y);
+                ctx.stroke();
+            }
+        }
+
+
+
+
+
+
+    }
+
+    link_line(points,"blue",[5,5])
+
+
+    points=[
+    { x: 30, y: 220 },
+    { x: 90, y: 220 },
+    { x: 90, y: 300 },
+    { x: 200, y: 300 }
+    ];
+function link_line_with_direction(dots,linecolor,linepattern){
+
+    ctx.beginPath();
+    ctx.arc(dots[0].x, dots[0].y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#000';
+    ctx.fill()
+
+    ctx.strokeStyle = linecolor; // Line color
+    ctx.setLineDash(linepattern); // Dotted line pattern
+    ctx.lineWidth = 2;
+
+    for (let i = 0; i < dots.length-1; i++) {
+        
+        ctx.beginPath();
+        ctx.moveTo(dots[i].x, dots[i].y);
+        ctx.lineTo(dots[i+1].x, dots[i+1].y);
+        ctx.stroke();
+       
+    }
+
+
+
+
+
+
+}
+link_line_with_direction(points,"gray",[15, 3, 3, 3] )
+
+
+
+
+    
+
+   
+
+}	
+
+
+
+	
 function ccb_08(){
     var canvas = document.getElementById('ccb_08');
     if(!canvas.getContext) return;
@@ -755,6 +951,8 @@ ccb_04();
 ccb_05();
 ccb_06();
 ccb_07();
+	ccb_07a();
+	ccb_07b();
 ccb_08();
 
 
