@@ -12,7 +12,7 @@
 
 <canvas id="ccb_07a" width="400" height="400"></canvas>
 <canvas id="ccb_07b" width="400" height="400"></canvas>
-
+<canvas id="ccb_07c" width="400" height="400"></canvas>
 <canvas id="ccb_08" width="300" height="300"></canvas>
 
 <canvas id="ccb_09" width="300" height="300"></canvas>
@@ -495,6 +495,87 @@ link_line_with_direction(points,"gray",[15, 3, 3, 3] )
 
 
 
+function ccb_07c(){
+    var canvas = document.getElementById('ccb_07c');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 15px sans-serif"
+    ctx.fillStyle="rgba(0, 0, 222, 0.6)";
+    ctx.fillText("ccb_07c", 20, 20);
+
+
+    const lineLength = 300;
+    const dashWidth = 10;
+    const dashSpacing = 5;
+    let dashOffset = 0;
+
+
+    function draw_straightline(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = 'blue'; // Line color
+            ctx.lineWidth = 2;
+            ctx.setLineDash([dashWidth, dashSpacing]);
+            ctx.lineDashOffset = dashOffset;
+
+            ctx.beginPath();
+            ctx.moveTo(50, 100);
+            ctx.lineTo(50 + lineLength, 100);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(50, 130);
+            ctx.lineTo(50 + lineLength, 150);
+            ctx.stroke();
+
+
+            ctx.beginPath();
+            ctx.moveTo(20, 200);
+            ctx.lineTo(80, 200);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(80, 200);
+            ctx.lineTo(80, 260);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(80, 260);
+            ctx.lineTo(180, 260);
+            ctx.stroke();
+
+
+
+
+            dashOffset++;
+            if (dashOffset > dashWidth + dashSpacing) {
+                dashOffset = 0;
+            }
+
+            //ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            
+        
+    }
+
+ 
+
+
+        function draw() {
+            
+            draw_straightline()
+           
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+        //draw(3);
+
+       
+
+
+}
 	
 function ccb_08(){
     var canvas = document.getElementById('ccb_08');
