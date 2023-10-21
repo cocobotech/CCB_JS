@@ -93,6 +93,17 @@ const originX = canvas.width / 2;
         ctx.strokeStyle = 'blue';
         ctx.stroke();
 
+
+   x0=3;
+        xtext=originX + x0 * scale;
+
+        y0=2 * x0 + 3;
+        ytext=originY - y0 * scale;
+
+        ctx.font = "bold 15px sans-serif"
+        ctx.fillStyle="rgba(0, 0, 222, 0.7)";
+        ctx.fillText("y=2*x+3", xtext+30, ytext);
+
 }
 ccb_01()
 </script>
