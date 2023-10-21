@@ -1,0 +1,415 @@
+<canvas id="ccb_09" width="300" height="300"></canvas>
+
+<canvas id="ccb_10" width="300" height="300"></canvas>
+<canvas id="ccb_11" width="300" height="300"></canvas>
+<canvas id="ccb_12" width="300" height="300"></canvas>
+
+<canvas id="ccb_13" width="300" height="300"></canvas>
+
+<script>    
+function ccb_09(){
+    var canvas = document.getElementById('ccb_09');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+
+    ctx.font = "bold 15px sans-serif"
+    ctx.fillStyle="rgba(0, 0, 222, 0.6)";
+    ctx.fillText("ccb_09", 20, 20);
+
+
+    function draw() {
+    
+
+        //roundedRect(ctx, 12, 12, 150, 150, 15);
+        roundedRect(ctx, 19, 19, 250, 250, 9);
+        roundedRect(ctx, 53, 53, 49, 33, 10);
+        roundedRect(ctx, 53, 119, 49, 16, 6);
+        roundedRect(ctx, 135, 53, 49, 33, 10);
+        roundedRect(ctx, 135, 119, 25, 49, 10);
+
+        ctx.beginPath();
+        ctx.arc(37, 37, 13, Math.PI / 7, -Math.PI / 7, false);
+        ctx.lineTo(31, 37);
+        ctx.fill();
+
+        for (let i = 0; i < 8; i++) {
+        ctx.fillRect(51 + i * 16, 35, 4, 4);
+        }
+
+        for (let i = 0; i < 6; i++) {
+        ctx.fillRect(115, 51 + i * 16, 4, 4);
+        }
+
+        for (let i = 0; i < 8; i++) {
+        ctx.fillRect(51 + i * 16, 99, 4, 4);
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(83, 116);
+        ctx.lineTo(83, 102);
+        ctx.bezierCurveTo(83, 94, 89, 88, 97, 88);
+        ctx.bezierCurveTo(105, 88, 111, 94, 111, 102);
+        ctx.lineTo(111, 116);
+        ctx.lineTo(106.333, 111.333);
+        ctx.lineTo(101.666, 116);
+        ctx.lineTo(97, 111.333);
+        ctx.lineTo(92.333, 116);
+        ctx.lineTo(87.666, 111.333);
+        ctx.lineTo(83, 116);
+        ctx.fill();
+
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.moveTo(91, 96);
+        ctx.bezierCurveTo(88, 96, 87, 99, 87, 101);
+        ctx.bezierCurveTo(87, 103, 88, 106, 91, 106);
+        ctx.bezierCurveTo(94, 106, 95, 103, 95, 101);
+        ctx.bezierCurveTo(95, 99, 94, 96, 91, 96);
+        ctx.moveTo(103, 96);
+        ctx.bezierCurveTo(100, 96, 99, 99, 99, 101);
+        ctx.bezierCurveTo(99, 103, 100, 106, 103, 106);
+        ctx.bezierCurveTo(106, 106, 107, 103, 107, 101);
+        ctx.bezierCurveTo(107, 99, 106, 96, 103, 96);
+        ctx.fill();
+
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(101, 102, 2, 0, Math.PI * 2, true);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(89, 102, 2, 0, Math.PI * 2, true);
+        ctx.fill();
+    
+    }
+
+    // A utility function to draw a rectangle with rounded corners.
+
+    function roundedRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x, y + radius);
+    ctx.arcTo(x, y + height, x + radius, y + height, radius);
+    ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+    ctx.arcTo(x + width, y, x + width - radius, y, radius);
+    ctx.arcTo(x, y, x, y + radius, radius);
+    ctx.stroke();
+    }
+
+    draw();
+
+    
+
+}
+
+
+
+function ccb_10(){
+    var canvas = document.getElementById('ccb_10');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    
+
+    function draw(){
+        
+        ctx.clearRect(0, 0, 300, 300); //清空所有的内容
+        ctx.font = "bold 15px sans-serif"
+        ctx.fillStyle="rgba(0, 0, 222, 0.6)";
+        ctx.fillText("ccb_10", 20, 20);
+
+        ctx.save();
+        ctx.strokeStyle="rgba(0,0, 230, 0.3)";
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]);  // [实线长度, 间隙长度]
+        ctx.lineDashOffset = -0;
+        ctx.strokeRect(5, 5, 280, 280);
+
+        ctx.restore();
+        /*绘制 太阳*/
+        
+        ctx.font = "bold 20px sans-serif"
+        
+        ctx.beginPath();
+        ctx.strokeStyle="orange";
+        ctx.lineWidth = 3;
+        ctx.fillText("SUN", 150-20, 150+7);
+        ctx.shadowBlur=30;
+        ctx.shadowColor="red";
+        ctx.arc(150, 150, 30, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.shadowBlur=0;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.translate(150, 150);
+        ctx.strokeStyle = "rgba(255,0,0,0.5)";
+        
+        ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+        ctx.stroke()
+        
+
+    
+        let time = new Date();
+        //绘制地球
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(0,0,255,0.8)";
+        ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+        ctx.translate(100, 0);
+        ctx.fillText("E", -15, 0);
+        ctx.fillStyle="rgba(0, 200, 0, 0.7)";
+        ctx.arc(0, 0, 20, 0, 2 * Math.PI);
+        ctx.stroke();
+    
+
+        //绘制月球轨道
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(0,0,255,0.3)";
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]);  // [实线长度, 间隙长度]
+        ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+    
+        //绘制月球
+        ctx.beginPath();
+        ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
+        ctx.translate(40, 0);
+        //ctx.drawImage(moon, -3.5, -3.5);
+        ctx.fillText("M", 0, 0);
+        ctx.strokeStyle = "rgba(0,255,255,0.8)";
+        ctx.setLineDash([5, 0]); 
+        ctx.arc(5, 5, 10, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        
+        ctx.restore();
+    
+        requestAnimationFrame(draw);
+    }
+	draw();
+
+
+}
+/*
+一般用到下面三个方法：
+
+setInterval()
+setTimeout()
+requestAnimationFrame()
+*/
+
+function ccb_11(){
+    var canvas = document.getElementById('ccb_11');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    
+
+    let raf;
+
+    const ball = {
+    x: 100,
+    y: 100,
+    vx: 5,
+    vy: 2,
+    radius: 15,
+    color: "red",
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    },
+    };
+
+    function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "bold 15px sans-serif"
+    ctx.fillStyle="rgba(0, 0, 222, 0.6)";
+    ctx.fillText("ccb_11", 20, 20);
+
+    ctx.strokeRect(0,0,300,300)
+    //ctx.stroke();
+
+    ball.draw();
+    ball.x += ball.vx;
+    ball.y += ball.vy;
+    ball.vy *= 0.99;
+    ball.vy += 0.25;
+
+    if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+        ball.vy = -ball.vy;
+    }
+    if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+        ball.vx = -ball.vx;
+    }
+
+    raf = window.requestAnimationFrame(draw);
+    }
+
+    canvas.addEventListener("mouseover", (e) => {
+    raf = window.requestAnimationFrame(draw);
+    });
+
+    canvas.addEventListener("mouseout", (e) => {
+    window.cancelAnimationFrame(raf);
+    ball.y=100;
+    });
+
+    ball.draw();
+    
+}
+
+function ccb_12(){
+    var canvas = document.getElementById('ccb_12');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+   
+
+}
+
+function ccb_13(){
+    var canvas = document.getElementById('ccb_13');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    draw();
+
+
+
+    function draw(){
+
+        
+        drawDial(ctx);
+        drawCenterCircle(ctx);
+        drawNumber(ctx);
+        drawAllHands(ctx); 
+        
+        requestAnimationFrame(draw);
+
+     
+    }
+
+    function drawAllHands(ctx){
+        let time = new Date();
+
+        let s = time.getSeconds();
+        let m = time.getMinutes();
+        let h = time.getHours();
+
+        let pi = Math.PI;
+        let secondAngle = pi / 180 * 6 * s;  
+        let minuteAngle = pi / 180 * 6 * m + secondAngle / 60;  
+        let hourAngle = pi / 180 * 30 * h + minuteAngle / 12; 
+
+        drawHand(hourAngle, 60, 10, "black", ctx);  
+        drawHand(minuteAngle, 80, 6, "black", ctx);  
+        drawHand(secondAngle, 100, 3, "red", ctx);  
+    }
+
+    function drawCenterCircle(ctx){
+
+        ctx.beginPath();
+        ctx.strokeStyle ="darkred";
+        ctx.lineWidth =5;
+        ctx.arc(150,150,12,0, Math.PI*2)
+        ctx.stroke();
+
+    }
+
+    function drawHand(angle, len, width, color, ctx){
+        ctx.save();
+        ctx.translate(150, 150); //把坐标轴的元点平移到原来的中心
+
+        
+
+
+
+        ctx.rotate(-Math.PI / 2 + angle);  //旋转坐标轴。 x轴就是针的角度
+        ctx.beginPath();
+        ctx.moveTo(-4, 0);
+        ctx.lineTo(len, 0);  // 沿着x轴绘制针
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.lineCap = "round";
+        ctx.stroke();
+        ctx.closePath();
+        ctx.restore();
+    }
+
+   
+    function drawDial(ctx){
+        let pi = Math.PI;
+        let tickLength;
+
+        ctx.clearRect(0, 0, 300, 300); //清除所有内容
+
+        ctx.font = "bold 15px serif"
+        ctx.fillStyle="rgba(0, 0, 252, 0.9)";
+        ctx.textAlign='center';
+        ctx.fillText("COCOBO", 150, 110);
+
+
+        ctx.save();
+
+        ctx.translate(150, 150); //一定坐标原点到原来的中心
+        ctx.beginPath();
+        ctx.strokeStyle = "darkblue";
+        ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周
+        ctx.stroke();
+        ctx.closePath();
+
+        for (let i = 0; i < 60; i++){//绘制刻度。
+            ctx.save();
+            ctx.rotate(-pi / 2 + i * pi / 30);  //旋转坐标轴。坐标轴x的正方形从 向上开始算起
+            ctx.beginPath();
+            
+            tickLength=i % 5 ? 5 : 10;
+
+            ctx.moveTo(125, 0);
+            ctx.lineTo(tickLength+125, 0);
+            ctx.lineWidth = i % 5 ? 3 : 8;
+            ctx.strokeStyle = i % 5 ? "gray" : "darkred";
+            ctx.stroke();
+            ctx.closePath();
+
+
+            
+            ctx.restore();
+        }
+         ctx.restore();
+    }
+
+    function drawNumber(ctx){
+            ctx.save();
+
+            ctx.translate(150, 150); 
+            ctx.font = "bold 25px sans-serif"
+            ctx.fillStyle="rgba(0, 0, 222, 0.9)";
+            ctx.textAlign='center';
+            ctx.textBaseline='middle';
+
+            let offset=-600;
+            let numbers=[1,2,3,4,5,6,7,8,9,10,11,12]
+
+            for (let i=0;i<numbers.length;i++){
+                let x=Math.cos(Math.PI*2/12*i-Math.PI/3)*106;
+                let y=Math.sin(Math.PI*2/12*i-Math.PI/3)*106;
+                ctx.fillText(numbers[i], x, y);
+            }
+
+            ctx.restore();
+        }
+
+}
+
+ccb_09();
+
+
+ccb_10();
+ccb_11();
+ccb_12();
+ccb_13();
+</script>                            
