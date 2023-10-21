@@ -1,0 +1,100 @@
+
+<br>
+<canvas id="ccb_01" width="450" height="400"></canvas>
+<canvas id="ccb_02" width="450" height="400"></canvas>
+<canvas id="ccb_03" width="450" height="400"></canvas>
+<canvas id="ccb_04" width="450" height="400"></canvas>
+
+
+function ccb_01(){
+   var canvas = document.getElementById('ccb_01');
+    if(!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "bold 15px sans-serif"
+    ctx.fillStyle="rgba(0, 0, 222, 0.7)";
+    ctx.fillText("ccb_01 math ", 20, 20);
+
+
+const originX = canvas.width / 2;
+        const originY = canvas.height / 2;
+        const scale = 20; // Pixels per unit
+        
+        // Draw grid lines
+        ctx.lineWidth=1;
+        ctx.strokeStyle = 'lightgray';
+        ctx.setLineDash([2, 2]); // Dotted lines
+        for (let x = -10; x <= 10; x++) {
+            ctx.beginPath();
+            ctx.moveTo(originX + x * scale, 0);
+            ctx.lineTo(originX + x * scale, canvas.height);
+            ctx.stroke();
+        }
+        for (let y = -10; y <= 10; y++) {
+            ctx.beginPath();
+            ctx.moveTo(0, originY - y * scale);
+            ctx.lineTo(canvas.width, originY - y * scale);
+            ctx.stroke();
+        }
+        
+        // Draw X and Y axes
+        ctx.strokeStyle = 'black';
+        ctx.setLineDash([]); // Solid lines
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, originY);
+        ctx.lineTo(canvas.width, originY);
+        ctx.moveTo(originX, 0);
+        ctx.lineTo(originX, canvas.height);
+        ctx.stroke();
+        
+        // Draw arrowheads at the ends of the axes
+        ctx.beginPath();
+        ctx.moveTo(canvas.width - 10, originY - 5);
+        ctx.lineTo(canvas.width, originY);
+        ctx.lineTo(canvas.width - 10, originY + 5);
+        ctx.moveTo(originX - 5, 10);
+        ctx.lineTo(originX, 0);
+        ctx.lineTo(originX + 5, 10);
+        ctx.stroke();
+        
+        // Draw tick marks and labels on the X-axis
+        for (let x = -10; x <= 10; x++) {
+            const screenX = originX + x * scale;
+            ctx.beginPath();
+            ctx.moveTo(screenX, originY - 5);
+            ctx.lineTo(screenX, originY + 5);
+            ctx.stroke();
+            ctx.fillText(x, screenX - 5, originY + 15);
+        }
+        
+        // Draw tick marks and labels on the Y-axis
+        for (let y = -10; y <= 10; y++) {
+            const screenY = originY - y * scale;
+            ctx.beginPath();
+            ctx.moveTo(originX - 5, screenY);
+            ctx.lineTo(originX + 5, screenY);
+            ctx.stroke();
+            ctx.fillText(y, originX + 10, screenY + 5);
+        }
+        
+        // Example line to plot: y = 2x + 3
+        ctx.beginPath();
+        for (let x = -10; x <= 10; x++) {
+            const y = 2 * x + 3;
+            const screenX = originX + x * scale;
+            const screenY = originY - y * scale;
+            if (x === -10) {
+                ctx.moveTo(screenX, screenY);
+            } else {
+                ctx.lineTo(screenX, screenY);
+            }
+        }
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+
+}
+
+
+
+ccb_01()
