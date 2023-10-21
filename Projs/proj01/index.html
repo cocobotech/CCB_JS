@@ -530,25 +530,44 @@ function ccb_07c(){
             ctx.stroke();
 
 
+            ctx.strokeStyle = 'purple'; // Line color
             ctx.beginPath();
             ctx.moveTo(20, 200);
             ctx.lineTo(80, 200);
             ctx.stroke();
 
-            ctx.beginPath();
+            //ctx.beginPath();
             ctx.moveTo(80, 200);
             ctx.lineTo(80, 260);
             ctx.stroke();
 
-            ctx.beginPath();
+            //ctx.beginPath();
             ctx.moveTo(80, 260);
             ctx.lineTo(180, 260);
             ctx.stroke();
 
 
+            ctx.strokeStyle = 'red'; // Line color
+            ctx.lineDashOffset = -dashOffset;
+            ctx.beginPath();
+            ctx.moveTo(220, 200);
+            ctx.lineTo(280, 200);
+            ctx.stroke();
+
+            //ctx.beginPath();
+            ctx.moveTo(280, 200);
+            ctx.lineTo(280, 260);
+            ctx.stroke();
+
+            //ctx.beginPath();
+            ctx.moveTo(280, 260);
+            ctx.lineTo(380, 260);
+            ctx.stroke();
 
 
-            dashOffset++;
+
+
+            dashOffset--;
             if (dashOffset > dashWidth + dashSpacing) {
                 dashOffset = 0;
             }
