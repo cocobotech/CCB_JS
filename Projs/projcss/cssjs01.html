@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>COCOBO</title> 
+
+
+<style>
+    :root {
+      --myanimation: mymove;
+      
+    }
+
+
+#RUN01
+{
+	width:300px;
+	height:200px;
+	background:red;
+	animation:var(--myanimation) 5s infinite;
+	/*Safari 和 Chrome:*/
+	-webkit-animation:var(--myanimation) 5s infinite;
+}
+
+@keyframes mymove
+	{
+	from {background-color:red;width:260px;}
+	to {background-color:blue;width:360px;}
+}
+
+@keyframes mymove2
+	{
+	from {background-color:rgb(50, 185, 68); width:260px;}
+	to {background-color:rgb(207, 23, 109);width:100px;}
+}
+
+/*Safari 和 Chrome:*/
+@-webkit-keyframes mymove
+{
+	from {background-color:red;}
+	to {background-color:blue;}
+}
+</style>
+
+
+<script>
+    // Get the root element
+    var r = document.querySelector(':root');
+    
+    // Create a function for getting a variable value
+    function myFunction_get() {
+      // Get the styles (properties and values) for the root
+      var rs = getComputedStyle(r);
+      // Alert the value of the --blue variable
+      //alert("The value of --blue is: " + rs.getPropertyValue('--blue'));
+    }
+    
+    
+
+    // Create a function for setting a variable value
+    function myFunction_move1() {
+      // Set the value of variable --blue to another value (in this case "lightblue")
+      r.style.setProperty('--myanimation', 'mymove');
+
+      var rs = getComputedStyle(r);
+      console.log(rs.getPropertyValue('--myanimation'))
+    }
+    function myFunction_move2() {
+        // Set the value of variable --blue to another value (in this case "lightblue")
+        r.style.setProperty('--myanimation', 'mymove2');
+        var rs = getComputedStyle(r);
+        console.log(rs.getPropertyValue('--myanimation'))
+      }
+    </script>
+
+</head>
+
+
+<body>
+
+<div id="container" style="width:1600px;height:600px" >
+
+<div id="header" style="background-color:#dfcce0;">
+<h1 style="margin-bottom:0;">PROJ01</h1></div>
+
+
+<div id="content01" style="background-color:#EEEEEE;height:400px;width:400px;float:left;">
+    
+    <div id="RUN01" style="background-color:#EEEEEE;height:100px;width:380px;float:left;">
+        <p>PROJ01A</p>
+        <button onclick="myFunction_move1()">move1</button>
+    <button onclick="myFunction_move2()">Move2</button>
+    </div>
+    
+</div>
+
+<div id="content02" style="background-color:#c8e8f5;height:400px;width:400px;float:right;">
+
+</div>
+
+<div id="content03" style="background-color:#d6c0c0;height:400px;width:400px;float:right;">
+
+</div>
+
+
+<div id="footer" style="background-color:#85817a;clear:both;text-align:center;">
+COCOBO.TECH</div>
+
+</div>
+ 
+</body>
+</html>
