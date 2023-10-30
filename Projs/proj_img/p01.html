@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>COCOBO.TECH</title> 
+
+<link rel="stylesheet" type="text/css" href="./showstyle.css">
+
+
+</head>
+<body>
+    <script type="text/javascript" src="./image.js"></script>
+<div id="container" style="width:1600px">
+
+<div id="header" style="background-color:#eeeeee;">
+<h1 style="margin-bottom:0;">TITLE</h1></div>
+
+<div id="menu" class="show show1">
+    <h1>Image URL to Base64 Converter</h1>
+    <input type="text" id="imageUrlInput" placeholder="Enter image URL">
+    <button onclick="document.getElementById('imageUrlInput').value='https://raw.githubusercontent.com/cocobotech/DB/main/science_rotate.png'">load Default IMG</button>
+    <button onclick="convertImageToBase64()">Convert to Base64</button>
+    <button onclick="convertBase64ToImage()">Base64-2-IMG</button>
+    
+    
+    <br>
+    <img id="imagePreview" style="display: none; width: 300px;" />
+    <div id="base64Result" style="display: none;">
+        <h3>Base64 Image:</h3>
+        <textarea id="base64TextArea" rows="10" cols="60"></textarea>
+    </div>
+
+    <img id="imagePreview2" style="display: none; width: 300px;" />
+
+
+</div>
+
+<div id="content" class="show show2">
+    <p>canvas</p>
+    <button onclick="convertBase64FromCanvas()">Base64-From-Canvas</button>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <h3>Base64 from canvas</h3>
+        <textarea id="base64TextArea2" rows="10" cols="60"></textarea>
+    </div>
+    <img id="imagePreview3" style="display: none; width: 300px;" />
+
+
+
+
+</div>
+
+<div id="content" class="show show3">
+    CONTENT
+</div>
+
+<div id="content" class="show show4">
+    CONTENT
+</div>
+
+<div id="content" class="show show1">
+    CONTENT
+</div>
+
+
+<div id="content" class="show show2">
+    CONTENT
+</div>
+
+<div id="content" class="show show3">
+    CONTENT
+</div>
+
+<div id="content" class="show show4">
+    CONTENT
+</div>
+
+
+<div id="footer" style="background-color:#e0e0f5;clear:both;text-align:center;">
+    COCOBO.TECH</div>
+
+</div>
+ 
+</body>
+</html>
